@@ -1,3 +1,14 @@
-<ul >
-  <li><a href="{% url 'todolist:task-list' %}">Home</a></li>
+<ul>
+  <li><a href="{% url 'todolist:task-list' %}">All task</a></li>
+
+<li>
+  {% if user.is_authenticated %}
+    Hello: {{ user.username }}
+    <a href="{% url 'user:logout' %}">Logout</a>
+  {% else %}
+    <a href="{% url 'user:login' %}">Login</a>
+  {% endif %}
+</li>
+
 </ul>
+
