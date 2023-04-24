@@ -4,7 +4,7 @@ Django online service to control your tasks
 
 ## Check it out!
 
-[Project deployed to Render](http://hikehikehike.pythonanywhere.com/)
+[Project deployed to Render](https://todo-list-1urq.onrender.com/)
 
 **Test user**
 
