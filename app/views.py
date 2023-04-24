@@ -22,6 +22,10 @@ class TaskCreationViews(LoginRequiredMixin, generic.CreateView):
     form_class = TaskForm
     success_url = reverse_lazy("todolist:task-list")
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class TaskUpdateViews(LoginRequiredMixin, generic.UpdateView):
     model = Task
