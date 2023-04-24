@@ -6,6 +6,7 @@ class Task(models.Model):
     header = models.CharField(max_length=255)
     content = models.TextField()
     datetime = models.DateTimeField(auto_now=True)
+    deadline = models.DateTimeField(blank=True, null=True)
     done_or_not = models.BooleanField()
 
     class Meta:
