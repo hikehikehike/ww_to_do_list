@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views import generic
@@ -39,6 +40,7 @@ class TaskDeleteViews(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("todolist:task-list")
 
 
+@login_required
 def complete_undo(request, pk):
     task = Task.objects.get(pk=pk)
     task.done_or_not = not task.done_or_not
