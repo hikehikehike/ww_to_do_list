@@ -10,7 +10,7 @@ Django online service to control your tasks
 
 Login: _admin_
 
-Password: _admin12345_
+Password: _admin_
 
 ## Installation
 
