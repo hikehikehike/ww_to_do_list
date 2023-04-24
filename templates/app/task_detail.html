@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ task.header }}</h1>
+  <hr>
+  Description:<h3>{{ task.content }}</h3>
+  <hr>
+  Created in:{{ task.datetime }}
+  <p>
+  Status: {% if task.done_or_not %}
+      <strong style="color: green">Done</strong>
+      <a href="{% url 'todolist:task-complete-undo' pk=task.pk %}?next={% url 'todolist:task-detail' pk=task.pk%}" class="btn btn-primary link-to-page">Undo</a>
+      {% else %}
+        <strong style="color: red"> Not done </strong>
+      <a href="{% url 'todolist:task-complete-undo' pk=task.pk %}?next={% url 'todolist:task-detail' pk=task.pk%}" class="btn btn-success link-to-page">Complete</a>
+    {% endif %}
+
+  Deadline: {{ task.deadline }}
+  </p>
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -42,4 +43,6 @@ def complete_undo(request, pk):
     task = Task.objects.get(pk=pk)
     task.done_or_not = not task.done_or_not
     task.save()
-    return HttpResponseRedirect(reverse_lazy("todolist:task-list"))
+    next_url = request.GET.get("next")
+    if next_url:
+        return redirect(next_url)
