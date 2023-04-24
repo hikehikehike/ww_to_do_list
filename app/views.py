@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -16,19 +17,19 @@ class TaskDetailViews(generic.DetailView):
     fields = "__all__"
 
 
-class TaskCreationViews(generic.CreateView):
+class TaskCreationViews(LoginRequiredMixin, generic.CreateView):
     model = Task
     form_class = TaskForm
     success_url = reverse_lazy("todolist:task-list")
 
 
-class TaskUpdateViews(generic.UpdateView):
+class TaskUpdateViews(LoginRequiredMixin, generic.UpdateView):
     model = Task
     form_class = TaskForm
     success_url = reverse_lazy("todolist:task-list")
 
 
-class TaskDeleteViews(generic.DeleteView):
+class TaskDeleteViews(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("todolist:task-list")
 
