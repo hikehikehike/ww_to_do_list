@@ -17,13 +17,13 @@
         <strong style="color: red"> Not done </strong>
       <a href="{% url 'todolist:task-complete-undo' pk=task.pk %}?next={% url 'todolist:task-list' %}" class="btn btn-success link-to-page">Complete</a>
     {% endif %}
-    {{ task.header }}
+      <a href="{% url 'todolist:task-detail' pk=task.pk %}">{{ task.header }}</a>
+
     </p>
     <p>
       Created: {{ task.datetime }}
     </p>
     <p>
-      <a href="{% url 'todolist:task-detail' pk=task.pk %}">Detail</a>
       <a href="{% url 'todolist:task-update' pk=task.pk %}">Update</a>
       <a href="{% url 'todolist:task-delete' pk=task.pk %}">Delete</a>
     </p>
